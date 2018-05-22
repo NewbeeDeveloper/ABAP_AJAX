@@ -1,0 +1,44 @@
+<html>
+    <head>
+    
+        <meta charset="UTF-8">
+        <script>
+
+        function showHint(str) {
+
+            //Validación del input text
+            if (str.length == 0) { 
+
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+
+            } else {    
+
+                //Creración del objeto para el llamado HTTP
+                var xmlhttp = new XMLHttpRequest();
+
+                //Esta función se ejecutará cuando el servidor esté listo
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+
+                //Envío de petición HTTP al archivo servicios.php
+                xmlhttp.open("GET", "servicios.php?q=" + str, true);
+                xmlhttp.send();
+            }
+        }
+        </script>
+    </head>
+    <body>
+        
+        <h1>PETICIÓN A FUNCIÓN SAP</h1>
+        <p><b>Convertir cadena de mayuscula a minuscula:</b></p>
+        <form> 
+        Cadena: <input type="text" onkeyup="showHint(this.value)">
+        </form>
+        <p>Resultado: <span id="txtHint"></span></p>
+
+    </body>
+</html>
