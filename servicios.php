@@ -7,7 +7,7 @@ ini_set('default_socket_timeout', 15);
 
 // Servicio WEB y creedenciales
 $wsdl_emp     = "WSDL1.xml";
-$options_emp  = array('login' => "EECHEVERRIA", 'password' => "GDC2017" );
+$options_emp  = array('login' => "", 'password' => "" );
 
 //LLamado al servicio WEB
 	try{ $client = new SoapClient($wsdl_emp,$options_emp); }catch(Exception $e){
